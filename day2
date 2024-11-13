@@ -1,0 +1,47 @@
+/*PROBLEM: LeetCode 1108. Defanging an IP address
+Given a valid (IPv4) IP address, return a defanged version of that IP address.
+A defanged IP address replaces every period "." with "[.]"
+*/
+class Solution {
+public:
+    string defangIPaddr(string address) {
+        string defanged = "";
+        for(char c:address){
+            if(c == '.'){
+                defanged+="[.]";
+            }
+            else{
+                defanged+=c;
+            }
+            
+        }
+        return defanged;  
+    }
+};
+
+
+/*PROBLEM: LeetCode 3280. Convert Date to Binary
+You are given a string date representing a Gregorian calendar date in the yyyy-mm-dd format.
+date can be written in its binary representation obtained by converting year, month, and day to their binary representations 
+without any leading zeroes and writing them down in year-month-day format.
+Return the binary representation of date.
+*/
+class Solution(object):
+
+    def intTobin(self,x):
+        binrev = ""
+        while(x):
+            binrev = binrev+ str(x%2)
+            x//=2
+        bin = (binrev)[::-1]
+        return bin
+
+    def convertDateToBinary(self, date):
+        """
+        :type date: str
+        :rtype: str
+        """
+        year = self.intTobin(int(date[0:4]))
+        month = self.intTobin(int(date[5:7]))
+        day = self.intTobin(int(date[8:]))
+        return year+"-"+month+"-"+day
